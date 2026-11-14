@@ -1,2 +1,360 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Loading</title></head><body>Loading</body></html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>O.Nursing — بنك أسئلة الموضوع الثالث عشر: الاضطراب ثنائي القطب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#7C2D3E; --burg-d:#5C1F2D; --gold:#C9A227; --gold-l:#F5ECD7;
+  --cream:#FBF7F0; --warm:#F9EFEA; --ink:#2b2b2b; --mut:#8a7a72;
+  --green:#2e7d4f; --green-bg:#e6f4ec; --red:#b3261e; --red-bg:#fdecea;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'Tajawal',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh;}
+.wrap{max-width:760px; margin:0 auto; padding:0 18px 40px; width:100%;}
+/* header */
+header{padding:20px 0 8px; text-align:center;}
+.brand{font-family:'Great Vibes',cursive; font-size:34px; color:var(--burg); line-height:1;}
+.brand .dot{color:#FF8A5F;}
+.brand .star{color:var(--gold); font-size:20px; vertical-align:middle;}
+.sub{font-size:13px; color:var(--mut); margin-top:4px;}
+.rule{height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:12px auto 0; max-width:420px;}
+/* cards */
+.card{background:#fff; border:1px solid #ead9c9; border-radius:16px; padding:20px; margin-top:16px; box-shadow:0 2px 10px rgba(124,45,62,.06);}
+h1{font-size:21px; color:var(--burg); line-height:1.5;}
+h1 .en{font-size:15px; color:var(--mut); display:block; font-weight:500;}
+.meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+.pill{background:var(--gold-l); color:var(--burg-d); border:1px solid var(--gold); border-radius:20px; padding:4px 12px; font-size:13px; font-weight:700;}
+.pill.soft{background:var(--warm); border-color:#e5c9c0;}
+/* level filter */
+.levels{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+.lvl{border:1.5px solid var(--gold); background:#fff; color:var(--burg); border-radius:20px; padding:7px 16px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;}
+.lvl.on{background:var(--burg); color:#fff; border-color:var(--burg);}
+.btn{display:block; width:100%; background:var(--burg); color:#fff; border:none; border-radius:12px; padding:14px; font-size:17px; font-weight:800; cursor:pointer; font-family:inherit; margin-top:16px;}
+.btn:hover{background:var(--burg-d);}
+.btn.ghost{background:#fff; color:var(--burg); border:1.5px solid var(--burg); margin-top:10px;}
+.btn:disabled{opacity:.5; cursor:default;}
+.small{font-size:13px; color:var(--mut); text-align:center; margin-top:10px; line-height:1.7;}
+/* quiz */
+.prog{height:8px; background:#eee; border-radius:8px; overflow:hidden; margin-top:16px;}
+.prog i{display:block; height:100%; background:linear-gradient(90deg,var(--gold),var(--burg)); width:0%; transition:width .3s;}
+.qtop{display:flex; justify-content:space-between; align-items:center; margin-top:14px; font-size:13px; color:var(--mut); font-weight:700;}
+.badge{font-size:12px; font-weight:800; border-radius:12px; padding:3px 10px;}
+.badge.easy{background:#e6f4ec; color:var(--green);}
+.badge.med{background:#fdf3d7; color:#8a6d00;}
+.badge.hard{background:#fdecea; color:var(--red);}
+.q{font-size:18px; font-weight:700; line-height:1.8; margin-top:12px; direction:ltr; text-align:left;}
+.q .ar-note{font-size:14px; color:var(--mut); font-weight:500; direction:rtl; text-align:right; display:block; margin-top:4px;}
+.opts{margin-top:14px; display:flex; flex-direction:column; gap:10px;}
+.opt{border:1.5px solid #e5d5c8; background:#fff; border-radius:12px; padding:12px 14px; font-size:16px; cursor:pointer; text-align:left; direction:ltr; font-family:inherit; line-height:1.5;}
+.opt:hover{border-color:var(--gold);}
+.opt.correct{border-color:var(--green); background:var(--green-bg);}
+.opt.wrong{border-color:var(--red); background:var(--red-bg);}
+.opt:disabled{cursor:default;}
+.tf{display:flex; gap:10px; margin-top:14px;}
+.tf .opt{flex:1; text-align:center; font-weight:800; font-size:17px;}
+.hintbtn{background:var(--gold-l); color:var(--burg-d); border:1px solid var(--gold); border-radius:10px; padding:8px 14px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; margin-top:14px;}
+.hint{display:none; background:#fffbe6; border:1px dashed var(--gold); border-radius:10px; padding:10px 14px; margin-top:10px; font-size:14px; line-height:1.8;}
+.hint.show{display:block;}
+.explain{display:none; border-radius:10px; padding:12px 14px; margin-top:12px; font-size:14.5px; line-height:1.9;}
+.explain.show{display:block;}
+.explain.ok{background:var(--green-bg); border:1px solid var(--green);}
+.explain.no{background:var(--red-bg); border:1px solid var(--red);}
+.explain b{color:var(--burg);}
+.model{display:none; background:var(--warm); border:1px solid #e5c9c0; border-radius:10px; padding:12px 14px; margin-top:12px; font-size:14.5px; line-height:1.9; white-space:pre-line;}
+.model.show{display:block;}
+textarea{width:100%; min-height:90px; border:1.5px solid #e5d5c8; border-radius:12px; padding:12px; font-family:inherit; font-size:15px; margin-top:14px; direction:ltr;}
+/* results */
+.score-ring{width:150px; height:150px; margin:10px auto; position:relative;}
+.score-ring svg{transform:rotate(-90deg);}
+.score-ring .pct{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:800; color:var(--burg);}
+.res-line{text-align:center; font-size:16px; line-height:2;}
+.res-line b{color:var(--burg);}
+table.res{width:100%; border-collapse:collapse; margin-top:12px; font-size:14px;}
+table.res td, table.res th{border:1px solid #ead9c9; padding:8px; text-align:center;}
+table.res th{background:var(--burg); color:#fff;}
+.hidden{display:none !important;}
+footer{text-align:center; font-size:12px; color:var(--mut); margin-top:26px; line-height:1.8;}
+/* O.Nursing — QR-only: no copying, no printing */
+body{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+textarea{ -webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text; }
+#print-note{ display:none; }
+@media print{ body *{ display:none !important; } #print-note{ display:block !important; text-align:center; font-size:16px; font-weight:700; color:#7c2d3e; margin-top:40%; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="star">✦</span> O<span class="dot">.</span>Nursing <span class="star">✦</span></div>
+    <div class="sub">بنك أسئلة — الترم الثاني • تمريض الصحة النفسية</div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- HOME -->
+  <div id="home" class="card">
+    <h1>الموضوع الثالث عشر: الاضطراب ثنائي القطب<span class="en">Topic 13 — Bipolar Affective Disorder</span></h1>
+    <div class="meta">
+      <span class="pill">40 سؤال</span>
+      <span class="pill soft">اختيار من متعدد + صح وخطأ + مقالي</span>
+      <span class="pill soft">متدرجة: سهل ← متوسط ← صعب</span>
+    </div>
+    <p style="margin-top:12px; font-size:14.5px; line-height:1.9;">أسئلة إضافية شاملة كل أفكار الموضوع: التعريف، الأنواع الأربعة، أعراض الهوس مقابل الاكتئاب، الحالة المختلطة، عوامل الخطر، العلاج والتدخلات النفسية — مع <b>تلميح</b> لكل سؤال وشرح بعد الإجابة.</p>
+    <div class="levels" id="levels">
+      <button class="lvl on" data-lvl="all">الكل (40)</button>
+      <button class="lvl" data-lvl="easy">سهل (15)</button>
+      <button class="lvl" data-lvl="med">متوسط (15)</button>
+      <button class="lvl" data-lvl="hard">صعب (10)</button>
+    </div>
+    <button class="btn" id="btn-start">ابدأ الأسئلة ←</button>
+    <button class="btn ghost hidden" id="btn-resume">كمّل من حيث توقفت</button>
+    <div class="small" id="home-stats"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="card hidden">
+    <div class="prog"><i id="prog-fill"></i></div>
+    <div class="qtop"><span id="q-count"></span><span id="q-badge"></span><span id="q-score"></span></div>
+    <div class="q" id="q-stem"></div>
+    <div id="q-body"></div>
+    <button class="hintbtn" id="btn-hint">💡 تلميح</button>
+    <div class="hint" id="q-hint"></div>
+    <div class="explain" id="q-explain"></div>
+    <div class="model" id="q-model"></div>
+    <button class="btn hidden" id="btn-next">السؤال التالي ←</button>
+    <button class="btn hidden" id="btn-finish">عرض النتيجة</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results" class="card hidden" style="text-align:center;">
+    <h1>النتيجة</h1>
+    <div class="score-ring">
+      <svg width="150" height="150" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="65" fill="none" stroke="#eee" stroke-width="10"/>
+        <circle id="ring-fg" cx="75" cy="75" r="65" fill="none" stroke="#7C2D3E" stroke-width="10" stroke-linecap="round" stroke-dasharray="408" stroke-dashoffset="408"/>
+      </svg>
+      <div class="pct" id="res-pct">0%</div>
+    </div>
+    <div class="res-line" id="res-line"></div>
+    <table class="res" id="res-table"></table>
+    <button class="btn" id="btn-retry">إعادة الأسئلة</button>
+    <button class="btn ghost" id="btn-home">رجوع للموضوع الثالث عشر</button>
+  </div>
+
+  <footer>O.Nursing • Dr: Abdullah Shawky<br>الأسئلة من محتوى المحاضرة وأسئلة امتحانات دبلوم المعاهد الفنية الصحية<br><b style="color:#7c2d3e;">الأسئلة خاصة بـ O.Nursing — ممنوع النسخ والنقل</b></footer>
+  <div id="print-note">الأسئلة خاصة بـ O.Nursing — ممنوع النسخ والنقل</div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {"id": 1, "level": "easy", "type": "mcq", "q": "Bipolar disorder is a type of:", "options": ["Anxiety disorder.", "Mood disorder.", "Personality disorder.", "Eating disorder."], "correct": 1, "hint": "It is about mood — up and down.", "explain": "<b>Bipolar disorder is a type of mood disorder</b>."},
+  {"id": 2, "level": "easy", "type": "mcq", "q": "Bipolar disorder was formerly called:", "options": ["Schizophrenia.", "Manic-Depression.", "Cyclothymia.", "Dysthymia."], "correct": 1, "hint": "The old name says both poles: mania and depression.", "explain": "Bipolar Disorder was formerly called <b>Manic-Depression</b>."},
+  {"id": 3, "level": "easy", "type": "mcq", "q": "In bipolar disorder, moods swing between two opposite poles:", "options": ["Mania and depression.", "Anxiety and fear.", "Anger and calm.", "Joy and sleep."], "correct": 0, "hint": "Two poles: one high, one low.", "explain": "Moods swing between two opposite poles: <b>periods of Mania</b> (exaggerated euphoria, irritability, or both) and <b>episodes of Depression</b>."},
+  {"id": 4, "level": "easy", "type": "mcq", "q": "Bipolar disorder usually develops in:", "options": ["Old age only.", "A person's mid-teens or early adult years.", "Infancy.", "Childhood only."], "correct": 1, "hint": "Teens to early adulthood — but it can affect all ages.", "explain": "It usually develops in a person's <b>mid-teens or early adult years</b> but can affect people of all ages."},
+  {"id": 5, "level": "easy", "type": "mcq", "q": "During a manic episode, a person may feel:", "options": ["Very sad and hopeless.", "Very “up,” “high,” or elated.", "Tired and slowed down.", "Unable to enjoy anything."], "correct": 1, "hint": "Mania = up, high, elated.", "explain": "A person having a manic episode may <b>feel very “up,” “high,” or elated</b>."},
+  {"id": 6, "level": "easy", "type": "mcq", "q": "During a manic episode, a person may:", "options": ["Sleep too much.", "Talk really fast about a lot of different things.", "Have very little energy.", "Forget things a lot."], "correct": 1, "hint": "Fast speech about many things is a manic sign.", "explain": "A person having a manic episode may <b>talk really fast about a lot of different things</b>."},
+  {"id": 7, "level": "easy", "type": "mcq", "q": "During a depressive episode, a person may feel:", "options": ["Very “up” and elated.", "Very sad, down, empty, or hopeless.", "“Jumpy” or “wired.”", "Like they can do many things at once."], "correct": 1, "hint": "Depression = sad, down, empty, hopeless.", "explain": "A person having a depressive episode may <b>feel very sad, down, empty, or hopeless</b>."},
+  {"id": 8, "level": "easy", "type": "mcq", "q": "During a depressive episode, a person may:", "options": ["Have a lot of energy.", "Think about death or suicide.", "Talk really fast.", "Feel like their thoughts are going very fast."], "correct": 1, "hint": "Thinking about death or suicide is a depressive symptom — the most serious one.", "explain": "A person having a depressive episode may <b>think about death or suicide</b>."},
+  {"id": 9, "level": "easy", "type": "mcq", "q": "Bipolar I is characterized by at least one:", "options": ["Depressive episode only.", "Manic episode or mixed episode.", "Panic attack.", "Hypomanic episode only."], "correct": 1, "hint": "Type I = a full manic or mixed episode.", "explain": "<b>Bipolar I</b> is characterized by at least one <b>manic episode or mixed episode</b>, and one or more depressive episodes that last for at least 7 days."},
+  {"id": 10, "level": "easy", "type": "mcq", "q": "A mixed episode means:", "options": ["Symptoms of both Mania and Depression occurring simultaneously.", "A depressive episode lasting 7 days.", "Rapid cycling between moods.", "A mild manic episode."], "correct": 0, "hint": "Mixed = both at the same time.", "explain": "A <b>mixed episode</b> is symptoms of <b>both Mania and Depression occurring simultaneously</b>."},
+  {"id": 11, "level": "easy", "type": "mcq", "q": "In Bipolar II, the manic episodes are:", "options": ["Full manic episodes.", "Only mild manic episodes — called hypomania.", "Absent completely.", "Longer than in Bipolar I."], "correct": 1, "hint": "Type II = mild mania only.", "explain": "<b>Bipolar II</b> has more than one episode of severe Depression, but only <b>mild manic episodes — called hypomania</b>."},
+  {"id": 12, "level": "easy", "type": "mcq", "q": "Rapid cycling means:", "options": ["More than four mood swings in a 12 month period.", "One manic episode per year.", "Mood swings lasting less than a week.", "Depression lasting more than a year."], "correct": 0, "hint": "More than four swings in a year.", "explain": "<b>Rapid cycling</b> means having <b>more than four mood swings in a 12 month period</b>."},
+  {"id": 13, "level": "easy", "type": "mcq", "q": "Most people with Bipolar Disorder spend the majority of their time:", "options": ["Manic.", "Depressed rather than manic.", "In a mixed state.", "Without any symptoms."], "correct": 1, "hint": "Most of the time is spent depressed, not manic.", "explain": "Most people who have Bipolar Disorder spend the <b>majority of their time depressed rather than manic</b>."},
+  {"id": 14, "level": "easy", "type": "mcq", "q": "The first line of treatment for Bipolar Disorder is:", "options": ["Surgery.", "Medication.", "Rest alone.", "Herbal remedies."], "correct": 1, "hint": "Medication comes first.", "explain": "The <b>first line of treatment is medication</b> that reduces the severity of the symptoms, stabilizes mood fluctuations and prevents relapse."},
+  {"id": 15, "level": "easy", "type": "tf", "q": "Cyclothymia can develop into full Bipolar disorder.", "correct": true, "hint": "Milder, longer — but it can grow into the full disorder.", "explain": "TRUE — the mood swings in cyclothymia are not as severe as full Bipolar Disorder, but can be longer, and <b>this can develop into full Bipolar disorder</b>."},
+  {"id": 16, "level": "med", "type": "mcq", "q": "Rapid cycling affects around:", "options": ["1 in 100 people with Bipolar Disorder.", "1 in 10 people with Bipolar Disorder.", "Half of people with Bipolar Disorder.", "All people with Bipolar Disorder."], "correct": 1, "hint": "One in ten.", "explain": "Rapid cycling affects around <b>1 in 10 people</b> with Bipolar Disorder, and can happen with both types I and II."},
+  {"id": 17, "level": "med", "type": "mcq", "q": "Cyclothymia is described as mood swings that are:", "options": ["More severe than full Bipolar Disorder.", "Not as severe as full Bipolar Disorder, but can be longer.", "Only depressive, never manic.", "Always rapid cycling."], "correct": 1, "hint": "Milder but longer.", "explain": "In <b>cyclothymia</b>, the mood swings are <b>not as severe as those in full Bipolar Disorder, but can be longer</b>."},
+  {"id": 18, "level": "med", "type": "mcq", "q": "Which of the following is a manic symptom?", "options": ["Feeling tired or “slowed down.”", "Feeling like their thoughts are going very fast.", "Eating too little.", "Having trouble concentrating."], "correct": 1, "hint": "Racing thoughts belong to mania.", "explain": "A person having a manic episode may <b>feel like their thoughts are going very fast</b>. The other options are depressive symptoms."},
+  {"id": 19, "level": "med", "type": "mcq", "q": "Which of the following is a depressive symptom?", "options": ["Having a lot of energy.", "Being agitated, irritable, or “touchy.”", "Feeling like they can't enjoy anything.", "Doing risky things like spending a lot of money."], "correct": 2, "hint": "Losing the ability to enjoy anything is depression.", "explain": "A person having a depressive episode may <b>feel like they can't enjoy anything</b>. The other options are manic symptoms."},
+  {"id": 20, "level": "med", "type": "mcq", "q": "Which of the following is a risk factor for Bipolar Disorder?", "options": ["Presence amongst first-degree relatives.", "Living in a big city.", "High income.", "Old age."], "correct": 0, "hint": "It runs in close family.", "explain": "<b>Presence amongst first-degree relatives</b> is a risk factor for Bipolar Disorder."},
+  {"id": 21, "level": "med", "type": "mcq", "q": "Which age group is listed as a risk factor for Bipolar Disorder?", "options": ["Childhood.", "Early twenties.", "Old age.", "Infancy."], "correct": 1, "hint": "The early twenties.", "explain": "Age — <b>early twenties</b> — is a risk factor for Bipolar Disorder."},
+  {"id": 22, "level": "med", "type": "mcq", "q": "Bipolar II is more prevalent in:", "options": ["Men.", "Women.", "Children.", "Older adults."], "correct": 1, "hint": "Bipolar II is more common in women.", "explain": "Gender — <b>Bipolar II more prevalent in women</b>."},
+  {"id": 23, "level": "med", "type": "mcq", "q": "Which severe physical illness is listed as a risk factor for Bipolar Disorder?", "options": ["Diabetes.", "Stroke.", "Asthma.", "Arthritis."], "correct": 1, "hint": "Stroke is the one named in the lecture.", "explain": "Severe physical illness — <b>stroke</b> — is a risk factor for Bipolar Disorder."},
+  {"id": 24, "level": "med", "type": "mcq", "q": "Medication as first-line treatment aims to: (choose the complete answer)", "options": ["Reduce the severity of the symptoms only.", "Reduce the severity of the symptoms, stabilize mood fluctuations and prevent relapse.", "Prevent relapse only.", "Replace psychological therapy."], "correct": 1, "hint": "Three aims, not one.", "explain": "First-line medication 1) <b>reduces the severity of the symptoms</b>, 2) <b>stabilizes mood fluctuations</b> and 3) <b>prevents relapse</b>."},
+  {"id": 25, "level": "med", "type": "mcq", "q": "Which therapy is recommended in the treatment guidelines for Bipolar Disorder?", "options": ["Cognitive behavioral therapy.", "Surgery.", "Acupuncture.", "Hypnosis."], "correct": 0, "hint": "CBT is on the guidelines list.", "explain": "Treatment guidelines recommend <b>cognitive behavioral therapy</b>, family-focused therapy, psychoeducation, interpersonal therapy, and ECT in severe mania or depression."},
+  {"id": 26, "level": "med", "type": "mcq", "q": "ECT is recommended in Bipolar Disorder in cases of:", "options": ["Mild depression only.", "Severe Mania or Depression.", "Rapid cycling only.", "Cyclothymia only."], "correct": 1, "hint": "ECT is for the severe cases.", "explain": "<b>ECT in severe Mania or Depression</b> is among the recommended treatments."},
+  {"id": 27, "level": "med", "type": "mcq", "q": "A psychological intervention for Bipolar Disorder is to provide:", "options": ["An environment high in stimulation.", "An environment that is low in stimulation.", "No food or fluids.", "Physical restraint first."], "correct": 1, "hint": "Low stimulation — calm the environment down.", "explain": "Psychological interventions include: <b>provide an environment that is low in stimulation</b>."},
+  {"id": 28, "level": "med", "type": "mcq", "q": "Physical restraint in Bipolar Disorder should be used:", "options": ["As the first option.", "Only as a last option — de-escalation techniques are always preferable.", "Every day.", "Never under any circumstances."], "correct": 1, "hint": "Last option only — de-escalation first.", "explain": "<b>Only use physical restraint as a last option — de-escalation techniques are always preferable</b>."},
+  {"id": 29, "level": "med", "type": "mcq", "q": "Relapse work in Bipolar Disorder means working on:", "options": ["Early warning signs and self-monitoring of symptoms.", "Forgetting the illness.", "Stopping all medication.", "Avoiding all support groups."], "correct": 0, "hint": "Catch the relapse early.", "explain": "<b>Relapse work — early warning signs and self-monitoring of symptoms</b> — is a psychological intervention."},
+  {"id": 30, "level": "med", "type": "mcq", "q": "Which of the following is a psychological intervention for Bipolar Disorder?", "options": ["Signpost to self-help and relevant support groups.", "Isolate the patient from everyone.", "Increase stimulation.", "Ignore dietary needs."], "correct": 0, "hint": "Point the patient toward help and support.", "explain": "<b>Signpost to self-help and relevant support groups</b> is a psychological intervention. The nurse also ensures dietary and fluid needs are met."},
+  {"id": 31, "level": "hard", "type": "mcq", "q": "The nurse observes a patient with bipolar disorder pacing in the hall, talking loudly and rapidly, and using elaborate hand gestures. The patient is demonstrating:", "options": ["Aggression.", "Anger.", "Anxiety.", "Psychomotor agitation."], "correct": 3, "hint": "Pacing + loud, rapid talk + big gestures = agitation, not anger.", "explain": "The patient is demonstrating <b>psychomotor agitation</b> — restless, nonproductive hyperactivity. (Book's own question, Topic 13.)"},
+  {"id": 32, "level": "hard", "type": "mcq", "q": "A patient with bipolar disorder begins lithium carbonate (Lithium) 300 mg four times a day. After 3 days the patient says “My hands are shaking.” The best response by the nurse is:", "options": ["“Fine motor tremors are an early effect of lithium therapy that usually subsides in a few weeks.”", "“It is nothing to worry about unless it continues for the next month.”", "“Tremors can be an early sign of toxicity, but we'll keep monitoring your lithium level to make sure you're okay.”", "“You can expect tremors with Lithium. You seem very concerned about such a small tremor.”"], "correct": 0, "hint": "A fine tremor early on is expected and fades — it is not toxicity.", "explain": "<b>Fine motor tremors are an early effect of lithium therapy that usually subsides in a few weeks</b>. Do not confuse this early fine tremor with lithium toxicity. (Book's own question, Topic 13.)"},
+  {"id": 33, "level": "hard", "type": "mcq", "q": "Which of the following typifies the speech of a person in the acute phase of mania?", "options": ["Flight of ideas.", "Psychomotor retardation.", "Hesitant.", "Mutism."], "correct": 0, "hint": "Manic speech jumps from idea to idea — flight of ideas.", "explain": "<b>Flight of ideas</b> typifies the speech of a person in the acute phase of mania. (Book's own question, Topic 13.)"},
+  {"id": 34, "level": "hard", "type": "mcq", "q": "A patient with mania begins dancing around the day room. The nurse distracts her and takes her to her room to put on underpants. The nurse acted as she did to:", "options": ["Minimize the patient's embarrassment about her present behavior.", "Keep her from dancing with other patients.", "Avoid embarrassing the male patients who are watching.", "Teach her about proper attire and hygiene."], "correct": 0, "hint": "The point is the patient's own dignity.", "explain": "The nurse acted to <b>minimize the patient's embarrassment about her present behavior</b>. (Book's own question, Topic 13.)"},
+  {"id": 35, "level": "hard", "type": "mcq", "q": "A patient has more than one episode of severe depression but only mild manic episodes. This is:", "options": ["Bipolar I.", "Bipolar II.", "Rapid cycling.", "Cyclothymia."], "correct": 1, "hint": "Severe depression + mild mania = Type II.", "explain": "More than one episode of severe Depression with only mild manic episodes (hypomania) is <b>Bipolar II</b>. Bipolar I needs a full manic or mixed episode."},
+  {"id": 36, "level": "hard", "type": "mcq", "q": "A patient has five mood swings in one year. This is:", "options": ["Bipolar I.", "Bipolar II.", "Rapid cycling.", "Cyclothymia."], "correct": 2, "hint": "More than four swings in 12 months = rapid cycling.", "explain": "More than four mood swings in a 12 month period is <b>rapid cycling</b>."},
+  {"id": 37, "level": "hard", "type": "mcq", "q": "Which of the following is TRUE about manic and depressive episodes?", "options": ["In most cases, manic episodes precede or follow depressive episodes in a regular pattern.", "Manic episodes never follow depressive episodes.", "Depressive episodes never occur in Bipolar I.", "Mixed episodes occur only in Bipolar II."], "correct": 0, "hint": "The pattern is regular: mania before or after depression.", "explain": "In most cases, <b>manic episodes precede or follow depressive episodes in a regular pattern</b>. A mixed episode can occur in Bipolar I."},
+  {"id": 38, "level": "hard", "type": "mcq", "q": "Managing risk to self and/or others is especially important when:", "options": ["The patient's mood is elevated.", "The patient is asleep.", "The patient is eating.", "The patient is discharged."], "correct": 0, "hint": "Elevated mood = higher risk.", "explain": "<b>Managing risk to self and/or others particularly when an individual's mood is elevated</b> is a psychological intervention."},
+  {"id": 39, "level": "hard", "type": "mcq", "q": "Which combination is a psychological intervention for Bipolar Disorder?", "options": ["Build a collaborative and therapeutic relationship + provide psychoeducation including medication adherence work.", "Restrain first + isolate the patient.", "High stimulation + no fluids.", "Stop medication + avoid support groups."], "correct": 0, "hint": "Relationship + education + adherence.", "explain": "<b>Build a collaborative and therapeutic relationship</b> and <b>provide psychoeducation including medication adherence work</b> are both psychological interventions."},
+  {"id": 40, "level": "hard", "type": "written", "q": "List the four types of Bipolar Disorders.", "model": "1) Bipolar I: at least one manic episode or mixed episode, and one or more depressive episodes that last for at least 7 days.\n2) Bipolar II: more than one episode of severe Depression, but only mild manic episodes (hypomania).\n3) Rapid cycling: more than four mood swings in a 12 month period (about 1 in 10 people).\n4) Cyclothymia: mood swings not as severe as full Bipolar Disorder, but can be longer; can develop into full Bipolar disorder.", "hint": "Count the types: I, II, rapid cycling, cyclothymia.", "explain": "The four types are: <b>Bipolar I</b> (full manic/mixed episode), <b>Bipolar II</b> (severe depression + hypomania only), <b>rapid cycling</b> (&gt;4 swings in 12 months), and <b>cyclothymia</b> (milder, longer, can develop into full bipolar)."}
+];
+</script>
+
+<script>
+const LVL = {easy:"سهل", med:"متوسط", hard:"صعب"};
+const LVLCLS = {easy:"easy", med:"med", hard:"hard"};
+const KEY = "onursing_topic13_progress_v1";
+let selectedLvl = "all";
+let queue = [], idx = 0, score = 0, answered = 0, results = [];
+let levelStats = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+let locked = false;
+
+function $(id){ return document.getElementById(id); }
+function loadProg(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function saveProg(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
+
+function refreshHome(){
+  const p = loadProg();
+  const done = p.done || {}, correct = p.correct || {};
+  const n = Object.keys(done).length;
+  const c = Object.keys(correct).length;
+  $("home-stats").textContent = n ? ("تقدّمك: أجبت على " + n + " سؤال من 40 — إجابات صحيحة: " + c + (p.best!=null ? (" • أفضل نتيجة: " + p.best + "%") : "")) : "ابدأ من السهل وتدرّج — كل سؤال معه تلميح وشرح.";
+  $("btn-resume").classList.toggle("hidden", !n || n>=40);
+}
+document.querySelectorAll("#levels .lvl").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    document.querySelectorAll("#levels .lvl").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); selectedLvl = b.dataset.lvl;
+  });
+});
+$("btn-start").addEventListener("click", ()=>startQuiz(false));
+$("btn-resume").addEventListener("click", ()=>startQuiz(true));
+
+function buildQueue(resume){
+  let pool = QUESTIONS.filter(q => selectedLvl==="all" || q.level===selectedLvl);
+  if(resume){
+    const p = loadProg(); const done = p.done || {};
+    pool = pool.filter(q => !done[q.id]);
+    if(!pool.length){ pool = QUESTIONS.filter(q => selectedLvl==="all" || q.level===selectedLvl); }
+  }
+  return pool.slice();
+}
+function startQuiz(resume){
+  queue = buildQueue(resume); idx = 0; score = 0; answered = 0; results = [];
+  levelStats = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+  queue.forEach(q=>{ if(q.type!=="written") levelStats[q.level].t++; });
+  $("home").classList.add("hidden"); $("results").classList.add("hidden"); $("quiz").classList.remove("hidden");
+  renderQ();
+}
+function cur(){ return queue[idx]; }
+function renderQ(){
+  const q = cur(); locked = false;
+  $("prog-fill").style.width = (idx/queue.length*100) + "%";
+  $("q-count").textContent = "سؤال " + (idx+1) + " من " + queue.length;
+  $("q-badge").innerHTML = '<span class="badge '+LVLCLS[q.level]+'">'+LVL[q.level]+'</span>';
+  $("q-score").textContent = "صح: " + score + " / " + answered;
+  $("q-stem").innerHTML = q.q + (q.ar ? '<span class="ar-note">'+q.ar+'</span>' : "");
+  $("q-hint").classList.remove("show"); $("q-hint").textContent = q.hint || "";
+  $("btn-hint").style.display = q.hint ? "" : "none";
+  const ex = $("q-explain"); ex.classList.remove("show","ok","no"); ex.innerHTML = "";
+  const mo = $("q-model"); mo.classList.remove("show"); mo.textContent = "";
+  $("btn-next").classList.add("hidden"); $("btn-finish").classList.add("hidden");
+  const body = $("q-body"); body.innerHTML = "";
+  if(q.type === "mcq"){
+    const box = document.createElement("div"); box.className = "opts";
+    q.options.forEach((op,i)=>{
+      const b = document.createElement("button"); b.className = "opt"; b.textContent = op;
+      b.addEventListener("click", ()=>answerMcq(i, b)); box.appendChild(b);
+    });
+    body.appendChild(box);
+  } else if(q.type === "tf"){
+    const box = document.createElement("div"); box.className = "tf";
+    [["True", true], ["False", false]].forEach(([label, val])=>{
+      const b = document.createElement("button"); b.className = "opt"; b.textContent = label;
+      b.addEventListener("click", ()=>answerTf(val, b)); box.appendChild(b);
+    });
+    body.appendChild(box);
+  } else if(q.type === "written"){
+    const ta = document.createElement("textarea"); ta.placeholder = "اكتب إجابتك هنا…";
+    body.appendChild(ta);
+    const b = document.createElement("button"); b.className = "btn"; b.textContent = "أظهر الإجابة النموذجية";
+    b.addEventListener("click", ()=>{
+      if(locked) return; locked = true;
+      mo.textContent = q.model; mo.classList.add("show");
+      ex.innerHTML = "<b>الشرح:</b> " + q.explain; ex.classList.add("show","ok");
+      b.disabled = true; showNav();
+    });
+    body.appendChild(b);
+  }
+}
+$("btn-hint").addEventListener("click", ()=>{ $("q-hint").classList.toggle("show"); });
+function markProgress(id, ok){
+  const p = loadProg(); p.done = p.done || {}; p.correct = p.correct || {};
+  p.done[id] = true; if(ok) p.correct[id] = true; saveProg(p);
+}
+function finishAnswer(ok){
+  answered++; if(ok) score++;
+  markProgress(cur().id, ok);
+  results.push({id:cur().id, ok:ok});
+  $("q-score").textContent = "صح: " + score + " / " + answered;
+  showNav();
+}
+function showNav(){
+  if(idx < queue.length-1){ $("btn-next").classList.remove("hidden"); }
+  else { $("btn-finish").classList.remove("hidden"); }
+}
+function answerMcq(i, btn){
+  if(locked) return; locked = true;
+  const q = cur(); const ok = (i === q.correct);
+  document.querySelectorAll("#q-body .opt").forEach((el, j)=>{
+    el.disabled = true;
+    if(j === q.correct) el.classList.add("correct");
+    if(j === i && !ok) el.classList.add("wrong");
+  });
+  const ex = $("q-explain");
+  ex.innerHTML = (ok ? "<b>✓ إجابة صحيحة.</b> " : "<b>✗ إجابة خاطئة.</b> الصح: <b>" + q.options[q.correct] + "</b><br>") + q.explain;
+  ex.classList.add("show", ok ? "ok" : "no");
+  finishAnswer(ok);
+}
+function answerTf(val, btn){
+  if(locked) return; locked = true;
+  const q = cur(); const ok = (val === q.correct);
+  document.querySelectorAll("#q-body .opt").forEach(el=>{
+    el.disabled = true;
+    const v = el.textContent === "True";
+    if(v === q.correct) el.classList.add("correct");
+    if(el === btn && !ok) el.classList.add("wrong");
+  });
+  const ex = $("q-explain");
+  ex.innerHTML = (ok ? "<b>✓ إجابة صحيحة.</b> " : "<b>✗ إجابة خاطئة.</b> الصح: <b>" + (q.correct ? "True" : "False") + "</b><br>") + q.explain;
+  ex.classList.add("show", ok ? "ok" : "no");
+  finishAnswer(ok);
+}
+$("btn-next").addEventListener("click", ()=>{ idx++; renderQ(); });
+$("btn-finish").addEventListener("click", showResults);
+function showResults(){
+  $("quiz").classList.add("hidden"); $("results").classList.remove("hidden");
+  const total = results.length || 1;
+  const pct = Math.round(score/total*100);
+  $("res-pct").textContent = pct + "%";
+  const ring = $("ring-fg");
+  ring.style.strokeDashoffset = 408 - (408*pct/100);
+  const p = loadProg(); if(p.best==null || pct > p.best){ p.best = pct; saveProg(p); }
+  let msg = pct>=90 ? "ممتاز! الموضوع ده بقى في جيبك." : pct>=70 ? "كويس جداً — راجع الغلطات وهتبقى ممتاز." : pct>=50 ? "بداية كويسة — راجع الشرح والغلطات وحاول تاني." : "محتاج مراجعة — ارجع للشرح في الملف وحاول تاني.";
+  $("res-line").innerHTML = "أجبت صح على <b>" + score + "</b> من <b>" + total + "</b> سؤال<br>" + msg;
+  let rows = "<tr><th>المستوى</th><th>صح</th><th>من</th></tr>";
+  const agg = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+  results.forEach(r=>{ const q = QUESTIONS.find(x=>x.id===r.id); if(!q) return; agg[q.level].t++; if(r.ok) agg[q.level].c++; });
+  ["easy","med","hard"].forEach(l=>{ if(agg[l].t) rows += "<tr><td>"+LVL[l]+"</td><td>"+agg[l].c+"</td><td>"+agg[l].t+"</td></tr>"; });
+  $("res-table").innerHTML = rows;
+}
+$("btn-retry").addEventListener("click", ()=>startQuiz(false));
+$("btn-home").addEventListener("click", ()=>{
+  $("results").classList.add("hidden"); $("home").classList.remove("hidden"); refreshHome();
+
+/* O.Nursing — QR-only protection: block copying, right-click, printing */
+document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+document.addEventListener("copy", function(e){ e.preventDefault(); });
+document.addEventListener("cut", function(e){ e.preventDefault(); });
+document.addEventListener("dragstart", function(e){ e.preventDefault(); });
+document.addEventListener("keydown", function(e){
+  if((e.ctrlKey || e.metaKey) && ["c","x","u","s","p","a"].indexOf(e.key.toLowerCase()) !== -1){ e.preventDefault(); }
+});
+});
+refreshHome();
+</script>
+</body>
+</html>
